@@ -1,0 +1,96 @@
+h1 {
+    text-align: center;
+}
+
+.pokedexButton {
+    /* overwrites browser defaults and resets the border */
+    border: 2px solid red;
+    display: inline-block;
+    /* takes the font from the outer container */
+    font-family: inherit;
+    /* styles the button */
+    font-weight: 700;
+    background-color: white;
+    color: #061228;
+    text-decoration: none;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 20px;
+}
+
+
+.pokedexButton:hover,
+.pokedexButton:focus {
+    /* lets the mouse appear as a hand when hovering over the button */
+    cursor: pointer;
+    /* reduces the opacity of the button to 80% */
+    transform: scale(1.2);
+  }
+
+ul {
+    list-style: none;
+    text-align: center;
+    padding: 0;
+}
+
+#modal-container {
+    position: fixed;
+    padding: 20px;
+    box-sizing: border-box;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    
+    /* to show it above other content */
+    z-index: 999; 
+    
+    /* to allow scrolling if the screen is not high enough*/
+    overflow: auto; 
+    
+    /* this is used to center the modal */
+    display: none;
+    text-align: center;
+  }
+
+  .modal {
+    margin: auto;
+    display: inline-block;
+    box-sizing: border-box;
+    background: #fff;
+    padding: 15px;
+    width: 100%;
+    max-width: 700px;
+    text-align: left;
+  }
+  
+  #modal-container.is-visible {
+    position: fixed;
+    padding: 20px;
+    box-sizing: border-box;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    
+    /* to show it above other content */
+    z-index: 999; 
+    
+    /* to allow scrolling if the screen is not high enough*/
+    overflow: auto; 
+    
+    /* this is used to center the modal */
+    display: block;
+    text-align: center;
+  }
+
+  .modal-close {
+    float: right;
+    -webkit-appearance: none;
+    border: 0;
+    background: none;
+    color: #777;
+    text-decoration: underline;
+  }
