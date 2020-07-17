@@ -18,21 +18,35 @@ var pokemonRepository = (function () { /*IIFE start*/
         }
     ];*/
 
-    function loadList() { 
-        return fetch(apiUrl).then(function (response) { /*fetch function used on apiUrl var to get pokemon list / start promise for async*/
-          return response.json(); // returns response and then takes that and converts it to json format from string
-        }).then(function (json) { 
-          json.results.forEach(function (item) { //explain what this line is doing please... I know it is loop start but do not get json.results and what that is
-            var pokemon = { // sets pokemon variable to be an object with name and detailsUrl
-              name: item.name,
-              detailsUrl: item.url
-            };
-            add(pokemon); // normalize the response and store it in the pokemonList array
-          });
-        }).catch(function (e) { //promise catch for error response
-          console.error(e);
-        })
-      }
+    function loadList() {
+      return $.ajax(apiUrl, {dataType: 'json'}).then(function(responseJSON) {
+        responseJSON.results.forEach(function (item) {
+          var pokemon = {
+            name: item.name,
+            detailsUrl: item.url
+          };
+          add(pokemon);
+        });
+      }).catch(function (e) {
+        console.error(e);
+      });
+    };
+
+    //function loadList() { 
+        //return fetch(apiUrl).then(function (response) { /*fetch function used on apiUrl var to get pokemon list / start promise for async*/
+          //return response.json(); // returns response and then takes that and converts it to json format from string
+        //}).then(function (json) { 
+          //json.results.forEach(function (item) { //explain what this line is doing please... I know it is loop start but do not get json.results and what that is
+            //var pokemon = { // sets pokemon variable to be an object with name and detailsUrl
+              //name: item.name,
+              //detailsUrl: item.url
+            //};
+            //add(pokemon); // normalize the response and store it in the pokemonList array
+          //});
+        //}).catch(function (e) { //promise catch for error response
+          //console.error(e);
+        //})
+      //}
 
     function loadDetails(pokemon) {
         var url = pokemon.detailsUrl;
@@ -100,11 +114,19 @@ var pokemonRepository = (function () { /*IIFE start*/
       var pictureElement = document.createElement('img'); //create img element for pokemon image
       pictureElement.setAttribute('src', pokemon.imageUrl); //set img source as imageUrl 
 
+      var types = '';
+      var typeElement = document.createElement('p');
+      pokemon.types.forEach((type, i) => {
+        types += ` ${type.type.name}`
+      });
+      typeElement.innerText = 'Type: ' + types;
+
       //add created elements
       modal.appendChild(closeButtonElement);
       modal.appendChild(titleElement);
       modal.appendChild(contentElement);
       modal.appendChild(weightElement);
+      modal.appendChild(typeElement);
       modal.appendChild(pictureElement);
       modalContainer.appendChild(modal);
       //add is-visible class to modalContainer so you can have a hidden/not hidden version in css
