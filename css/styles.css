@@ -6,6 +6,12 @@ body {
   font-family: 'Lato', sans-serif;
 }
 
+.picture {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .pokedexButton {
   display:inline-block;
   background-color: #f14e4e;

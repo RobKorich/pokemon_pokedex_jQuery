@@ -105,7 +105,7 @@ var pokemonRepository = (function () { /*IIFE start*/
     function showModal(pokemon) { 
       var modalContainer = $('#modal-container');
       modalContainer.addClass('is-visible');
-      
+
       modalContainer.empty(); // clear modal
 
       var modal = $('<div class="modal"></div>');
@@ -122,7 +122,7 @@ var pokemonRepository = (function () { /*IIFE start*/
       var weightElement = $('<p></p>');
       weightElement.text('Weight: ' + pokemon.weight);
       
-      var pictureElement = $('<img>');
+      var pictureElement = $('<img class="picture">');
       pictureElement.attr('src', pokemon.imageUrl);
     
       var types = [];
