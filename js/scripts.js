@@ -48,12 +48,10 @@ var pokemonRepository = (function () { /*IIFE start*/
         //})
       //}
 
-    function loadDetails(pokemon) {
+      function loadDetails(pokemon) {
         var url = pokemon.detailsUrl;
-        return fetch(url).then(function (response) {
-          return response.json();
-        }).then(function (details) {
-          //Now we add the details to the pokemon
+        return $.ajax(url, {dataType: 'json'})
+        .then(function (details) {
           pokemon.imageUrl = details.sprites.front_default;
           pokemon.height = details.height;
           pokemon.types = details.types;
@@ -62,6 +60,21 @@ var pokemonRepository = (function () { /*IIFE start*/
           console.error(e);
         });
       }
+
+    //function loadDetails(pokemon) {
+        //var url = pokemon.detailsUrl;
+        //return fetch(url).then(function (response) {
+          //return response.json();
+        //}).then(function (details) {
+          //Now we add the details to the pokemon
+          //pokemon.imageUrl = details.sprites.front_default;
+          //pokemon.height = details.height;
+          //pokemon.types = details.types;
+          //pokemon.weight = details.weight;
+        //}).catch(function (e) {
+          //console.error(e);
+        //});
+      //}
 
     /* how to add a pokemon
     console.log(pokemonRepository.getAll());
@@ -90,55 +103,52 @@ var pokemonRepository = (function () { /*IIFE start*/
     }
 
     function showModal(pokemon) { 
-      var modalContainer = document.querySelector('#modal-container'); // select modal container from div id in html
-
-      modalContainer.innerHTML = ''; // clear modal
-
-      var modal = document.createElement('div'); // create div element and assign it modal class
-      modal.classList.add('modal');
-
-      var closeButtonElement = document.createElement('button'); // create button element and assign it modal-close class
-      closeButtonElement.classList.add('modal-close');
-      closeButtonElement.innerText = 'Close';
-      closeButtonElement.addEventListener('click', hideModal); //add event listener to Close button to run hideModal function on click
+      var modalContainer = $('#modal-container');
+      modalContainer.addClass('is-visible');
       
-      var titleElement = document.createElement('h1'); // create h1 element for title
-      titleElement.innerText = pokemon.name; // set title text to be title(pokemon.name)
+      modalContainer.empty(); // clear modal
 
-      var contentElement = document.createElement('p'); //create p element for Heigh info
-      contentElement.innerText = 'Height: ' + pokemon.height; // set pokemon heigh info
+      var modal = $('<div class="modal"></div>');
 
-      var weightElement = document.createElement('p');
-      weightElement.innerText = 'Weight: ' + pokemon.weight;
+      var closeButtonElement = $('<button class="modal-close">Close</button>');
+      closeButtonElement.on('click', hideModal);
+    
+      var titleElement = $('<h1></h1>');
+      titleElement.text(pokemon.name);
 
-      var pictureElement = document.createElement('img'); //create img element for pokemon image
-      pictureElement.setAttribute('src', pokemon.imageUrl); //set img source as imageUrl 
-
-      var types = '';
-      var typeElement = document.createElement('p');
-      pokemon.types.forEach((type, i) => {
-        types += ` ${type.type.name}`
+      var contentElement = $('<p></p>');
+      contentElement.text('Height: ' + pokemon.height);
+     
+      var weightElement = $('<p></p>');
+      weightElement.text('Weight: ' + pokemon.weight);
+      
+      var pictureElement = $('<img>');
+      pictureElement.attr('src', pokemon.imageUrl);
+    
+      var types = [];
+      var typeElement = $('<p></p>');
+      $.each(pokemon.types, (i, type) => {
+        types.push(type.type.name)
       });
-      typeElement.innerText = 'Type: ' + types;
-
-      //add created elements
-      modal.appendChild(closeButtonElement);
-      modal.appendChild(titleElement);
-      modal.appendChild(contentElement);
-      modal.appendChild(weightElement);
-      modal.appendChild(typeElement);
-      modal.appendChild(pictureElement);
-      modalContainer.appendChild(modal);
-      //add is-visible class to modalContainer so you can have a hidden/not hidden version in css
-      modalContainer.classList.add('is-visible');
+      typeElement.text('Type: ' + types.join(', '));
+      
+      modal.append([
+        closeButtonElement,
+        titleElement,
+        contentElement,
+        weightElement,
+        typeElement,
+        pictureElement
+      ]);
+      modalContainer.append(modal);
     }
     
     function hideModal() {
-      var modalContainer = document.querySelector('#modal-container');
-      modalContainer.classList.remove('is-visible');
+      var modalContainer = $('#modal-container');
+      modalContainer.removeClass('is-visible');
     }
 
-    window.addEventListener('keydown', (e) => {
+    $(window).on('keydown', (e) => {
       var modalContainer = document.querySelector('#modal-container');
       if(e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
         hideModal();
@@ -152,14 +162,13 @@ var pokemonRepository = (function () { /*IIFE start*/
     });
 
     function addListItem(pokemon) {
-        var pokedexList = document.querySelector('.pokemon-list'); /*selects <ul> in HTML and assigns it as the pokedexList variable*/
-        var listItem = document.createElement('li'); /*creates the <li> element and assigns it as the listItem variable*/
-        var button = document.createElement('button'); /* creates a <button> element and assings it as the button variable*/
-        button.innerText = pokemon.name; /*?? got it to work but why is it pokemon and not pokemonList again*/
-        button.classList.add('pokedexButton'); /*adds a class name 'pokedexButton' to button so it can be edited in css*/
-        button.addEventListener('click', () => showDetails(pokemon)); /*wrap showDetails function in another function so it isn't called immediately when code runs but when click event executes*/
-        listItem.appendChild(button); /*states parent element then adds child button*/
-        pokedexList.appendChild(listItem);/*states parent element then adds child listItem*/
+        var pokedexList = $('.pokemon-list');
+        var listItem = $('<li></li>');
+        var button = $('<button class="pokedexButton"></button>');
+        button.text(pokemon.name);
+        button.on('click', () => showDetails(pokemon));
+        listItem.append(button);
+        pokedexList.append(listItem);
     }
 
     /*only things visible outside of IIFE*/
