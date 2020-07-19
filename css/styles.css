@@ -2,6 +2,10 @@ h1 {
     text-align: center;
 }
 
+body {
+  font-family: 'Lato', sans-serif;
+}
+
 .pokedexButton {
     /* overwrites browser defaults and resets the border */
     border: 2px solid red;
