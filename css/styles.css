@@ -12,8 +12,8 @@ body {
   margin-right: auto;
 }
 
-.pokedexButton {
-  display:inline-block;
+/*.pokedexButton {
+  display: inline-block;
   background-color: #f14e4e;
   padding: 10px;
   margin: 5px;
@@ -33,7 +33,7 @@ body {
 .pokedexButton:focus {
   cursor: pointer;
   transform: scale(1.2);
-}
+}*/
 
 @media all and (max-width:30em){
   .pokedexButton {
@@ -108,4 +108,13 @@ ul {
     background: none;
     color: #777;
     text-decoration: underline;
+  }
+
+  .btn {
+    margin: 5px;
+  }
+
+  .btn:hover,
+  .btn:focus {
+    transform: scale(1.1);
   }

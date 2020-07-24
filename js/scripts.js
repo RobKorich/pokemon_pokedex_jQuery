@@ -93,7 +93,7 @@ var pokemonRepository = (function () { /*IIFE start*/
     }
 
     function getAll() {
-        return pokemonList;
+      return pokemonList;
     }
 
     function showDetails(pokemon) { //function that is called when pokemon button is clicked on
@@ -103,27 +103,29 @@ var pokemonRepository = (function () { /*IIFE start*/
     }
 
     function showModal(pokemon) { 
-      var modalContainer = $('#modal-container');
-      modalContainer.addClass('is-visible');
+      //var modalContainer = $('#modal-container');
+      //modalContainer.addClass('is-visible');
 
-      modalContainer.empty(); // clear modal
+      //modalContainer.empty(); // clear modal
 
-      var modal = $('<div class="modal"></div>');
+      //var modal = $('<div class="modal"></div>');
 
-      var closeButtonElement = $('<button class="modal-close">Close</button>');
-      closeButtonElement.on('click', hideModal);
+      //var closeButtonElement = $('<button class="modal-close">Close</button>');
+      //closeButtonElement.on('click', hideModal);
+      var modalBody = $('.modal-body');
+      modalBody.empty();
     
-      var titleElement = $('<h1></h1>');
-      titleElement.text(pokemon.name);
+      var titleElement = $('<h1>' + pokemon.name + '</h1>');
+      //titleElement.text(pokemon.name);
 
-      var contentElement = $('<p></p>');
-      contentElement.text('Height: ' + pokemon.height);
-     
-      var weightElement = $('<p></p>');
-      weightElement.text('Weight: ' + pokemon.weight);
-      
       var pictureElement = $('<img class="picture">');
       pictureElement.attr('src', pokemon.imageUrl);
+
+      var heightElement = $('<p>' + 'Height: ' + pokemon.height + 'ft' + '</p>');
+      //heightElement.text('Height: ' + pokemon.height);
+     
+      var weightElement = $('<p>' + 'Weight: ' + pokemon.weight + 'lb' + '</p>');
+      //weightElement.text('Weight: ' + pokemon.weight);
     
       var types = [];
       var typeElement = $('<p></p>');
@@ -132,18 +134,18 @@ var pokemonRepository = (function () { /*IIFE start*/
       });
       typeElement.text('Type: ' + types.join(', '));
       
-      modal.append([
-        closeButtonElement,
+      modalBody.append([
+        //closeButtonElement,
         titleElement,
-        contentElement,
+        pictureElement,
+        heightElement,
         weightElement,
         typeElement,
-        pictureElement
       ]);
-      modalContainer.append(modal);
+      //modalContainer.append(modalBody);
     }
     
-    function hideModal() {
+    /*function hideModal() {
       var modalContainer = $('#modal-container');
       modalContainer.removeClass('is-visible');
     }
@@ -159,12 +161,12 @@ var pokemonRepository = (function () { /*IIFE start*/
           hideModal();
         }
       })
-    });
+    });*/
 
     function addListItem(pokemon) {
         var pokedexList = $('.pokemon-list');
         var listItem = $('<li></li>');
-        var button = $('<button class="pokedexButton"></button>');
+        var button = $('<button class="btn btn-primary" data-toggle="modal" data-target="#pokemonModal"></button>');
         button.text(pokemon.name);
         button.on('click', () => showDetails(pokemon));
         listItem.append(button);
@@ -187,24 +189,3 @@ pokemonRepository.loadList().then(function() { /*new code to review*/
         pokemonRepository.addListItem(pokemon);
     });
 });
-
-/*document.write('<p>' + pokemon.name + ' (height: ' + pokemon.height + ')')
-if (pokemon.height > 1) {
-    document.write(' - Wow, thats\'s big!')
-}
-document.write('</p>')*/
-
-/* reference code for later (old version)
-
-for (var i = 0; i < pokemonList.length; i++) {
-    var className = 'otherPokemon'
-    if (pokemonList[i].name === 'Charmander') {
-        className = 'pokemon'
-    }
-    document.write('<p class="'+ className +'">' + pokemonList[i].name + ' (height: ' + pokemonList[i].height + ')')
-    if (pokemonList[i].height > 1) {
-        document.write(' - Wow, that\'s big!')
-    }
-    document.write('</p>')
-}
-*/
