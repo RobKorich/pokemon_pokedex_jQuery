@@ -1,6 +1,6 @@
 body {
   font-family: 'Lato', sans-serif;
-  background: url(../img/Pikachu\ Background.jpg);
+  background-image: url(../img/Pikachu\ Background.jpg);
 }
 
 .btn-primary {
@@ -12,7 +12,6 @@ body {
   margin: 5px;
   width: 180px;
   text-transform: uppercase;
-  border-radius: 5%;
 }
 
 .btn:hover,
@@ -80,4 +79,4 @@ h1 {
 #thePokedex {
   margin-top: 60px;
   padding: 40px;
-}
+} 

@@ -98,3 +98,13 @@ pokemonRepository.loadList().then(function() {
         pokemonRepository.addListItem(pokemon);
     });
 });
+
+//Search bar
+$(document).ready(function () {
+  $('#myInput').on('keyup', function () {
+    var value = $(this).val().toLowerCase()
+    $('.list-group-item').filter(function () {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    })
+  })
+})
