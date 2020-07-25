@@ -1,13 +1,65 @@
-h1 {
-    text-align: center;
-}
-
 body {
   font-family: 'Lato', sans-serif;
+  background: url(../img/Pikachu\ Background.jpg);
+}
+
+.btn-primary {
+  background-color: #e32d1f;
+  border-color: #e32d1f;
+}
+
+.btn {
+  margin: 5px;
+  width: 180px;
+  text-transform: uppercase;
+  border-radius: 5%;
+}
+
+.btn:hover,
+.btn:focus {
+  background-color: #e32d1f;
+  border-color: #e32d1f;
+  transform: scale(1.1);
+}
+
+#close{
+  width: auto;
+}
+
+h1 {
+    text-align: center;
+    font-family: 'Press Start 2P', cursive;
+    color: #343a40;
+}
+
+.modal-content {
+  text-align: center;
+  font-size: 25px;
+  color: white;
+  border-radius: 7%;
+  background: no-repeat bottom/25% url(../img/open\ pokemon\ ball.png);
+  background-position: bottom 155px left 40px;
+  background-color: #343a40;
+  margin-top: 200px;
 }
 
 .modal-header .close {
   margin: auto 0;
+}
+
+.modal-footer {
+  border-top: none;
+}
+.modal-title {
+  margin: 0 auto;
+  text-align: center;
+  line-height: 100%;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+}
+
+.nav-item {
+  font-family: 'Press Start 2P', cursive;
 }
 
 .picture {
@@ -16,21 +68,16 @@ body {
   margin-right: auto;
 }
 
-ul {
-    list-style: none;
-    text-align: center;
-    padding: 0;
+.pokemon-list {
+  margin-top: 40px;
+  align-items: center;
 }
 
-.modal-content {
-    text-align: center;
+#pokemonName {
+  color: white;
 }
 
-.btn {
-    margin: 5px;
-}
-
-.btn:hover,
-.btn:focus {
-    transform: scale(1.1);
+#thePokedex {
+  margin-top: 60px;
+  padding: 40px;
 }
