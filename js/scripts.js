@@ -1,16 +1,28 @@
 var pokemonRepository = (function () { /*IIFE start*/
     var pokemonList = [];
     var apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150'; /*pokemon list now loaded from external api*/
+
+    function sortAlphabetically(a, b) {
+        // sort the list
+        if (a.name > b.name) {
+          return 1;
+        } else if (b.name > a.name) {
+          return -1;
+        } else {
+          return 0;
+        }
+    }
    
     function loadList() {
       return $.ajax(apiUrl, {dataType: 'json'}).then(function(responseJSON) {
-        responseJSON.results.forEach(function (item) {
-          var pokemon = {
-            name: item.name,
-            detailsUrl: item.url
-          };
-          add(pokemon);
-        });
+        responseJSON.results.sort(sortAlphabetically)
+          .forEach(function (item) {
+            var pokemon = {
+              name: item.name,
+              detailsUrl: item.url
+            };
+            add(pokemon);
+          });
       }).catch(function (e) {
         console.error(e);
       });
