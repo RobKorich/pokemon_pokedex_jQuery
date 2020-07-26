@@ -13,26 +13,26 @@
 
   <body>
     <!--Bootstrap navbar-->
-    <nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-dark">
+    <nav class="navbar fixed-top navbar-expand-sm navbar-custom">
       <a class="navbar-brand" href="#"></a>
         <img src="img/pikachu.png" width="60" height="60" alt="image of pikachu">
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" role="menubar" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item active">
-            <a class="nav-link" href="index.html" role="menuitem">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link navbar-brand" href="index.html" role="menuitem">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="https://robkorich.github.io/Portfolio-Website/index.html" role="menuitem" target="_blank">Portfolio</a>
+            <a class="nav-link navbar-brand" href="https://robkorich.github.io/Portfolio-Website/index.html" role="menuitem" target="_blank">Portfolio</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="https://github.com/RobKorich" role="menuitem" target="_blank">Github</a>
+            <a class="nav-link navbar-brand" href="https://github.com/RobKorich" role="menuitem" target="_blank">Github</a>
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" id="myInput" type="search" placeholder="search" aria-label="Search">
+          <input class="form-control mr-sm-2" id="myInput" type="search" placeholder="Search" aria-label="Search">
         </form>
       </div>
     </nav>
@@ -49,10 +49,10 @@
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h2 class="modal-title" id="exampleModalLabel"></h2>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <div class="modal-title" id="exampleModalLabel"></div>
+                <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
-                </button>
+                </button>-->
               </div>
               <div class="modal-body">
               </div>
@@ -63,10 +63,6 @@
           </div>
         </div>
       </div>
-
-      <!--<nav id="navbar_bottom" class="navbar fixed-bottom px-1 py-1">
-        <input class="form-control" id="myInput" type="search" placeholder="search" aria-label="Search">
-      </nav>-->
 
       <!--jquerymin/bootstrap scripts with popper.js (use proper order)-->
       <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>

@@ -1,6 +1,9 @@
 body {
   font-family: 'Lato', sans-serif;
-  background-image: url(../img/Pikachu\ Background.jpg);
+  background-image: url(../img/Pikachu\ Background\ new.jpg);
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .btn-primary {
@@ -21,14 +24,28 @@ body {
   transform: scale(1.1);
 }
 
-#close{
+#close {
   width: auto;
+}
+
+.custom-toggler {
+  border-color: #e32d1f;
+}
+
+.navbar-toggler-icon {
+  background-image: url( 
+  "data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(227, 45, 31, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E"); 
 }
 
 h1 {
     text-align: center;
     font-family: 'Press Start 2P', cursive;
-    color: #343a40;
+    color: black;
+}
+
+h4 {
+  font-family: 'Press Start 2P', cursive;
+  margin-top: 10px;
 }
 
 .modal-content {
@@ -38,7 +55,7 @@ h1 {
   border-radius: 7%;
   background: no-repeat bottom/25% url(../img/open\ pokemon\ ball.png);
   background-position: bottom 155px left 40px;
-  background-color: #343a40;
+  background-color: black;
   margin-top: 200px;
 }
 
@@ -56,6 +73,18 @@ h1 {
   text-transform: uppercase;
   letter-spacing: 5px;
 }
+
+.navbar-custom {
+  background-color: black;
+}
+
+.navbar-brand { 
+  color: #e32d1f; 
+} 
+ .navbar-brand:hover {
+   color: #e32d1f;
+   transform: scale(1.1);
+ }
 
 .nav-item {
   font-family: 'Press Start 2P', cursive;

@@ -49,7 +49,7 @@ var pokemonRepository = (function () { /*IIFE start*/
       modalBody.empty();
       modalTitle.empty();
       
-      var titleElement = $('<h1 id="pokemonName">' + pokemon.name + '</h1>');
+      var titleElement = $('<h4 id="pokemonName">' + pokemon.name + '</h4>');
       modalTitle.append(titleElement);
       
       var pictureElement = $('<img class="picture">');
